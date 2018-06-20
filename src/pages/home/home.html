@@ -1,14 +1,37 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Rabobank Assessment
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <div *ngIf="!data">
+    <ion-item>
+      <input type="file" (change)="fileUpload($event.target.files)" id="inputFile">
+    </ion-item>
+  </div>
+
+  <div *ngIf="data" id="tableInformation">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Search</ion-label>
+        <ion-input type="text" [(ngModel)]="filterWord" (ngModelChange)="filterColumn()" id="inputText"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-grid>
+      <ion-row class="table-title">
+          <ion-col *ngFor="let name of tableTitle; let i = index" (click)="sortColumn(i)">
+            {{name}} 
+            <ion-icon name="arrow-dropup" *ngIf="i===indexSort && sorting"></ion-icon>
+            <ion-icon name="arrow-dropdown" *ngIf="i===indexSort && !sorting"></ion-icon>
+          </ion-col>
+      </ion-row>
+      <ion-row class="table-element" *ngFor="let elem of data">
+          <ion-col *ngFor="let name of elem">{{name}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
