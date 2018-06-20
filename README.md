@@ -44,15 +44,3 @@ The code has been documented with [compodoc](https://github.com/compodoc/compodo
 npm run compodoc
 ``` 
 to generate the documentation.
-
-
-Here is my solution for the front-end assignment.
-
-There is a readme.md explaining how to set up and deploy the app.
-
-If you have any question, ask me please.
-
-
-
-Regards.
-
